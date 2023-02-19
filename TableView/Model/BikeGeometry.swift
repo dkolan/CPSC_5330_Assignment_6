@@ -8,17 +8,17 @@
 import Foundation
 
 struct BikeGeometry {
-    init(_ mfct: String, _ mdl: String, _ sz: Int, _ stck: Double, _ rch: Double) {
+    init(_ mfct: String, _ mdl: String, _ tt: Int, _ stck: Double, _ rch: Double) {
         manufacturer = mfct
         model = mdl
-        size = sz
+        topTube = tt
         stack = stck
         reach = rch
     }
     
     var manufacturer: String
     var model: String
-    var size: Int
+    var topTube: Int
     var stack: Double
     var reach: Double
 

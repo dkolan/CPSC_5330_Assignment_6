@@ -8,10 +8,20 @@
 import UIKit
 
 class BikeGeometryView: UIViewController {
+    
+    var stack : Double = 0
+    var reach : Double = 0
+    var topTube : Int = 0
 
+    @IBOutlet weak var stackValue: UILabel!
+    @IBOutlet weak var reachValue: UILabel!
+    @IBOutlet weak var topTubeValue: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        stackValue.text = String(stack) + "mm"
+        reachValue.text = String(reach) + "mm"
+        topTubeValue.text = String(topTube) + "mm"
         // Do any additional setup after loading the view.
     }
     
@@ -26,4 +36,7 @@ class BikeGeometryView: UIViewController {
     }
     */
 
+    @IBAction func closeModalBtn(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }

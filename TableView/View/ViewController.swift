@@ -30,14 +30,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let selectedTrail = bikeGeometryLogic.geometries[indexPath.row]
-//            
-//            if let viewController = storyboard?.instantiateViewController(identifier: "TrailViewController") as? TrailViewController {
-//                viewController.trail = selectedTrail
-//                navigationController?.pushViewController(viewController, animated: true)
-//            }
-//    }
+//        let destinationVC = BikeGeometryView()
+//        destinationVC.stack = bikeGeometryLogic.geometries[indexPath.row].stack
+//        destinationVC.reach = bikeGeometryLogic.geometries[indexPath.row].reach
+//        destinationVC.performSegue(withIdentifier: "toBikeGeometryView", sender: self)
+            
+//        self.performSegue(withIdentifier: "toBikeGeometryView", sender: self)
+        
+//        let bikeData = bikeGeometryLogic.geometries[indexPath.row]
+        self.performSegue(withIdentifier: "toBikeGeometryView", sender: indexPath)
+
+    }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if (segue.identifier == "toBikeGeometryView") {
+            let navigation = segue.destination as! BikeGeometryView
+            let row = (sender as! IndexPath).row
+            navigation.topTube = bikeGeometryLogic.geometries[row].topTube
+            navigation.stack = bikeGeometryLogic.geometries[row].stack
+            navigation.reach = bikeGeometryLogic.geometries[row].reach
+        }
+    }
 
 }
 
